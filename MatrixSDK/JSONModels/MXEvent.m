@@ -165,6 +165,9 @@ NSString *const kMXMessageContentKeyExtensibleLocationMSC3488 = @"org.matrix.msc
 NSString *const kMXMessageContentKeyExtensibleLocationURI = @"uri";
 NSString *const kMXMessageContentKeyExtensibleLocationDescription = @"description";
 
+NSString *const kMXEventTypeStringUserLocationBeaconInfo = @"org.matrix.msc3489.beacon_info.self";
+NSString *const kMXEventTypeStringUserLocationBeacon = @"org.matrix.msc3489.beacon.self";
+
 #pragma mark - MXEvent
 @interface MXEvent ()
 {

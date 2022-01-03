@@ -1585,10 +1585,10 @@ MXAuthAction;
  @return a MXHTTPOperation instance.
  */
 - (MXHTTPOperation*)updateStateEvent:(MXEventTypeString)eventType
-                        withValue:(NSDictionary*)value
-                           inRoom:(NSString*)roomId
-                          success:(void (^)(void))success
-                          failure:(void (^)(NSError *error))failure
+                           withValue:(NSDictionary*)value
+                              inRoom:(NSString*)roomId
+                             success:(void (^)(void))success
+                             failure:(void (^)(NSError *error))failure
 {
     NSString *path = [NSString stringWithFormat:@"%@/rooms/%@/state/%@", apiPathPrefix, roomId, eventType];
 

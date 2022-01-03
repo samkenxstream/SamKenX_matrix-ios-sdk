@@ -932,6 +932,32 @@ FOUNDATION_EXPORT NSInteger const kMXRoomAlreadyJoinedErrorCode;
                              success:(void (^)(NSString *eventId))success
                              failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
 
+/**
+ Creates state event advertising user location beacon
+ 
+ @param description the beacon description
+ @param lifetime how long the beacon will publish for in milliseconds
+ @param success A block object called when the operation succeeds.
+ @param failure A block object called when the operation fails.
+ */
+- (MXHTTPOperation*)publishUserLocationBeaconWithDescription:(NSString *)description
+                                                    lifetime:(NSUInteger)lifetime
+                                                     success:(void (^)(void))success
+                                                     failure:(void (^)(NSError *error))failure;
+
+/**
+ Creates state event providing user location data
+ 
+ @param latitude location latitude
+ @param longitude location longitude
+ @param success A block object called when the operation succeeds.
+ @param failure A block object called when the operation fails.
+ */
+- (MXHTTPOperation*)publishUserLocationBeaconDataWithLatitude:(double)latitude
+                                                    longitude:(double)longitude
+                                                      success:(void (^)(void))success
+                                                      failure:(void (^)(NSError *error))failure;
+
 #pragma mark - Polls
 
 - (MXHTTPOperation *)sendPollStartWithContent:(MXEventContentPollStart *)content

@@ -2302,12 +2302,62 @@ NSInteger const kMXRoomAlreadyJoinedErrorCode = 9001;
                                            kMXMessageTypeAudio,
                                            kMXMessageTypeFile,
                                            kMXMessageTypeLocation
-                                           ];
+        ];
         
         canReplyToEvent = [supportedMessageTypes containsObject:messageType];
     }
     
     return canReplyToEvent;
+}
+
+- (MXHTTPOperation *)publishUserLocationBeaconWithDescription:(NSString *)description
+                                                     lifetime:(NSUInteger)lifetime
+                                                      success:(void (^)(void))success
+                                                      failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary *beaconInfo = [NSMutableDictionary dictionary];
+    beaconInfo[@"description"] = description;
+    
+    NSInteger timestamp = NSDate.date.timeIntervalSince1970 * 1000; // milliseconds since UNIX epoch
+    beaconInfo[@"created"] = @(timestamp);
+//    beaconInfo[@"lifetime"] = @(lifetime);
+    
+    return [mxSession.matrixRestClient sendStateEventToRoom:self.roomId
+                                                  eventType:kMXEventTypeStringUserLocationBeaconInfo
+                                                    content:@{@"m.beacon_info" : beaconInfo}
+                                                   stateKey:mxSession.myUserId
+                                                    success:^(NSString *eventId) {
+        if(success) {
+            success();
+        }
+    } failure:failure];
+}
+
+- (MXHTTPOperation *)publishUserLocationBeaconDataWithLatitude:(double)latitude
+                                                     longitude:(double)longitude
+                                                       success:(void (^)(void))success
+                                                       failure:(void (^)(NSError *))failure
+{
+    NSMutableDictionary *content = [NSMutableDictionary dictionary];
+    
+    NSInteger timestamp = NSDate.date.timeIntervalSince1970 * 1000; // milliseconds since UNIX epoch
+    content[kMXMessageContentKeyExtensibleTimestamp] = @(timestamp);
+    
+    MXEventContentLocation *locationContent = [[MXEventContentLocation alloc] initWithLatitude:latitude
+                                                                                     longitude:longitude
+                                                                                   description:nil];
+    
+    content[kMXMessageContentKeyExtensibleLocationMSC3488] = locationContent.JSONDictionary;
+    
+    return [mxSession.matrixRestClient sendStateEventToRoom:self.roomId
+                                                  eventType:kMXEventTypeStringUserLocationBeacon
+                                                    content:content
+                                                   stateKey:mxSession.myUserId
+                                                    success:^(NSString *eventId) {
+        if(success) {
+            success();
+        }
+    } failure:failure];
 }
 
 #pragma mark - Polls

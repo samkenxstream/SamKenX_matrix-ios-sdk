@@ -96,6 +96,8 @@ typedef NS_ENUM(NSInteger, MXEventType)
     MXEventTypePollStart,
     MXEventTypePollResponse,
     MXEventTypePollEnd,
+    MXEventTypeLocationBeaconInfo,
+    MXEventTypeLocationBeacon,
 
     // The event is a custom event. Refer to its `MXEventTypeString` version
     MXEventTypeCustom = 1000
@@ -253,6 +255,9 @@ FOUNDATION_EXPORT NSString *const kMXMessageContentKeyExtensibleLocation;
 FOUNDATION_EXPORT NSString *const kMXMessageContentKeyExtensibleLocationMSC3488;
 FOUNDATION_EXPORT NSString *const kMXMessageContentKeyExtensibleLocationURI;
 FOUNDATION_EXPORT NSString *const kMXMessageContentKeyExtensibleLocationDescription;
+
+FOUNDATION_EXPORT NSString *const kMXEventTypeStringUserLocationBeaconInfo;
+FOUNDATION_EXPORT NSString *const kMXEventTypeStringUserLocationBeacon;
 
 /**
  The internal event state used to handle the different steps of the event sending.

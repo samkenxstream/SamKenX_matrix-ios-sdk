@@ -1561,10 +1561,10 @@ typedef MXHTTPOperation* (^MXRestClientIdentityServerAccessTokenHandler)(void (^
  
  @return a MXHTTPOperation instance.
  */
-- (MXHTTPOperation*) updateTaggedEvents:(NSString*)roomId
-                            withContent:(MXTaggedEvents*)content
-                                success:(void (^)(void))success
-                                failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
+- (MXHTTPOperation*)updateTaggedEvents:(NSString*)roomId
+                           withContent:(MXTaggedEvents*)content
+                               success:(void (^)(void))success
+                               failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
 
 /**
  Get the tagged events
@@ -1576,9 +1576,9 @@ typedef MXHTTPOperation* (^MXRestClientIdentityServerAccessTokenHandler)(void (^
  
  @return a MXHTTPOperation instance.
  */
-- (MXHTTPOperation*) getTaggedEvents:(NSString*)roomId
-                             success:(void (^)(MXTaggedEvents *taggedEvents))success
-                             failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
+- (MXHTTPOperation*)getTaggedEvents:(NSString*)roomId
+                            success:(void (^)(MXTaggedEvents *taggedEvents))success
+                            failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
 
 /**
  Set a dedicated room account data field
@@ -1592,11 +1592,11 @@ typedef MXHTTPOperation* (^MXRestClientIdentityServerAccessTokenHandler)(void (^
  
  @return a MXHTTPOperation instance.
  */
-- (MXHTTPOperation*) setRoomAccountData:(NSString*)roomId
-                              eventType:(MXEventTypeString)eventTypeString
-                         withParameters:(NSDictionary*)content
-                                success:(void (^)(void))success
-                                failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
+- (MXHTTPOperation*)setRoomAccountData:(NSString*)roomId
+                             eventType:(MXEventTypeString)eventTypeString
+                        withParameters:(NSDictionary*)content
+                               success:(void (^)(void))success
+                               failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
 
 /**
  Get the room account data field
@@ -1609,10 +1609,10 @@ typedef MXHTTPOperation* (^MXRestClientIdentityServerAccessTokenHandler)(void (^
  
  @return a MXHTTPOperation instance.
  */
-- (MXHTTPOperation*) getRoomAccountData:(NSString*)roomId
-                              eventType:(MXEventTypeString)eventTypeString
-                                success:(void (^)(NSDictionary *JSONResponse))success
-                                failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
+- (MXHTTPOperation*)getRoomAccountData:(NSString*)roomId
+                             eventType:(MXEventTypeString)eventTypeString
+                               success:(void (^)(NSDictionary *JSONResponse))success
+                               failure:(void (^)(NSError *error))failure NS_REFINED_FOR_SWIFT;
 
 #pragma mark - Profile operations
 /**
